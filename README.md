@@ -1,5 +1,7 @@
 # An independent review handoff for AI agents
 
+![review handoff: one finding as the reviewer writes it (the basket total ignores quantity, with what is required, what was observed, the evidence and what closes it), and the four steps from builder to reviewer to verdict to you](media/independent-review-handoff-hero.png)
+
 **A builder agent says "done" and hands over its work. If the reviewer only reads the builder's report and agrees, nothing was reviewed.**
 
 This is the reviewer's side, packaged as an Agent Skill. The reviewing agent checks the work itself, keeps what it verified apart from what the builder only claimed, and writes each problem as a finding another engineer can reproduce. When something must be corrected, it ends with a repair brief the owner can authorize and pass back. Then it stops: the owner accepts, and the owner decides what happens next.
@@ -54,7 +56,7 @@ The core is [`SKILL.md`](skills/independent-review-handoff/SKILL.md), and four r
 
 ## Status
 
-Version 1.0.0 is the skill exactly as it has been used, placed under version control for the first time. It has no automated tests yet; see [CHANGELOG.md](CHANGELOG.md).
+Version 1.1.0. The package has offline checks (`python3 -m unittest discover tests`). The nine behaviour cases in [`tests/behavioral-cases.md`](tests/behavioral-cases.md) are written but not yet run; see [CHANGELOG.md](CHANGELOG.md).
 
 ---
 

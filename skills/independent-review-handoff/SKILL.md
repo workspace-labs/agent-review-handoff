@@ -5,6 +5,8 @@ description: "Independent engineering review, acceptance verification, and corre
 
 # Independent Review Handoff
 
+Skill version: 1.1.0
+
 Deliver an understandable review and, when implementation corrections are needed, a repair brief another engineer can execute after owner authorization. A finding explains **what is wrong**; its corrective action defines **what must become true and how to prove it**. The builder chooses implementation within approved constraints; the reviewer verifies; the owner accepts and authorizes further work.
 
 ## Role and limits
@@ -38,10 +40,10 @@ Use the project's vocabulary; otherwise:
 
 Every report, including Compact, identifies target/scope, authorized criteria, evidence and its provenance, findings/statuses, limitations, proportionate integrity checks, verdict, and next owner gate. Report commands with target revision, environment/profile, actual status/result; skipped is not passed. Never claim zero bugs, a guaranteed final round, or automatic production readiness.
 
+**A result that changes on unchanged work decides nothing by itself.** When a check gives different results on repeated runs against the same candidate, or your verdict or a finding's status differs from an earlier review of the identical candidate and no new evidence explains the difference, do not choose one. Report every result with its run and name what differs. An unstable pass never establishes acceptance. Classify an intermittent failure by its evidence, not by whether its cause is known: runs that show the candidate violating a required behavior establish a finding, with the root cause marked HYPOTHESIS until it is confirmed; a failure traced to the environment is not a candidate defect, and the criterion it was meant to prove stays unproven; where neither the violation nor its attribution is established, the item belongs under **OPEN QUESTIONS / UNVERIFIED RISKS** and the affected criterion stays under **REVIEW BLOCKED / INCOMPLETE** for the owner. Findings already established and conclusions the instability does not touch keep their status.
+
 When corrections are required, read the packet template in report-templates.md and end with **CLAUDE CORRECTIVE HANDOFF — FOR OWNER AUTHORIZATION**. Unless the project requires another format, retain every named packet section. Include exact reproduction inputs and observed/required results for each ID inside the packet, plus cause certainty and impact. Never rely on “above,” “earlier,” or an absent finding: a referenced artifact must be identified and supplied to the recipient. Check the packet in isolation from the rest of your response before finalizing it. Do not send it or authorize implementation. An accepted review has no fabricated repair packet; a blocked review names missing evidence and a safe resumption point.
 
 ## Completion check
 
 Before responding, verify: candidate identity is unchanged or explicitly re-established; scope/criteria match the owner; important claims have evidence or uncertainty; findings have sound static proof or reproduction; IDs/severity are consistent; unrelated debt is separate; failed/skipped/missing tests are disclosed; protected trees/data were compared appropriately; the handoff preserves the original intent; technical closure is distinct from owner acceptance; no next task began. Report incomplete review when material proof is missing.
-
-Creation provenance: the skills ecosystem search for "independent review handoff" returned no matching skill on 2026-09-17; this is the owner-specified custom workflow.

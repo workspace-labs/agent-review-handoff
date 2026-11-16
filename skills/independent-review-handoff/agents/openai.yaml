@@ -1,0 +1,6 @@
+interface:
+  display_name: "Independent Review Handoff"
+  short_description: "Evidence-based reviews and corrective handoffs"
+  default_prompt: "Use $independent-review-handoff to review the authorized change and prepare any required corrective handoff."
+policy:
+  allow_implicit_invocation: true

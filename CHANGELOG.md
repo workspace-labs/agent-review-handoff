@@ -1,5 +1,17 @@
 # Changelog
 
+## Unreleased
+
+Test tooling only. The skill is unchanged and stays 1.1.0.
+
+- Added `tests/fixtures.py`: builds the nine behaviour cases as small Git projects with one prompt each,
+  and afterwards reports what each reviewer changed. The requests are read from
+  `tests/behavioral-cases.md`; the expected results never reach a prompt.
+- One package check builds the fixtures in a temporary folder and confirms a changed file is reported.
+- First run of the nine cases, 2026-11-16: one fresh Codex session per case with the installed 1.1.0.
+  All nine reports met their expected result, and no reviewer changed the project it reviewed. One run
+  per case, evaluated by the builder of the cases, with no run without the skill to compare against.
+
 ## 1.1.0 — 2026-11-16
 
 - **New rule: a result that changes on unchanged work decides nothing.** When a check gives different results on repeated runs against the same candidate, or a verdict differs from an earlier review of the identical candidate with no new evidence, the reviewer reports every result and does not choose one. An unstable pass never establishes acceptance. An intermittent failure is classified by its evidence, not by whether its cause is known: a shown violation is a finding, an environmental failure is not a candidate defect, and an unestablished one blocks only the affected criterion.

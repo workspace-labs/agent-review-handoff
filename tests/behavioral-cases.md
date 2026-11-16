@@ -6,7 +6,10 @@ defect, the expected verdict or the "Observe" lines below. A separate evaluator 
 the report and the fixture's files with the contract after the run. No dependencies,
 commits, publishing, live data or application installs are needed.
 
-Each case names what the fixture must contain; build it small. Each may also be run
+Each case names what the fixture must contain. `python3 tests/fixtures.py build <a new folder outside this
+repository>` builds all nine as small Git projects, with one prompt per case that holds the request and
+never the expected result; `python3 tests/fixtures.py check <that folder>` shows afterwards what each
+reviewer changed. Each may also be run
 without the skill as a baseline; record both results separately.
 
 ## A correct small change

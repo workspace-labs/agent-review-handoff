@@ -56,7 +56,7 @@ The core is [`SKILL.md`](skills/independent-review-handoff/SKILL.md), and four r
 
 ## Status
 
-Version 1.1.0. The package has offline checks (`python3 -m unittest discover tests`). The nine behaviour cases in [`tests/behavioral-cases.md`](tests/behavioral-cases.md) were run once on 2026-11-16, one fresh reviewing session per case: all nine met their expected result. That is one run each, judged by the cases' own author; see [CHANGELOG.md](CHANGELOG.md).
+Version 1.1.0. The package has offline checks (`python3 -m unittest discover tests`). The nine behaviour cases in [`tests/behavioral-cases.md`](tests/behavioral-cases.md) were run twice with the skill (2026-11-16 and 2026-11-17), one fresh reviewing session per case: all nine met their expected result both times. One run without the skill failed no case but left out the repair brief and the skill's verdict words in some. The second day's reports were also judged blind by two other agents; the cases are small and their author ran them. See [CHANGELOG.md](CHANGELOG.md).
 
 ---
 

@@ -1,6 +1,8 @@
 """Build and check the fixtures for the behaviour cases in behavioral-cases.md.
 
     python3 tests/fixtures.py build <run-dir>     make one small Git project per case, and one prompt each
+    python3 tests/fixtures.py build <run-dir> --no-skill    the same, but the prompts do not name the skill
+                                                  (a baseline run; the skill must also be switched off for it)
     python3 tests/fixtures.py check <run-dir>     after the runs: what did each reviewer change?
     python3 tests/fixtures.py change <run-dir>    case 8 only: change the candidate while it is being reviewed
 
@@ -236,7 +238,7 @@ def state(repo):
     return {"files": files, "head": git(repo, "rev-parse", "HEAD").strip(), "status": git(repo, "status", "--porcelain").splitlines()}
 
 
-def build(run):
+def build(run, name_the_skill=True):
     if run.exists():
         raise SystemExit("{} already exists: give a new folder".format(run))
     if HERE.parent in [run, *run.parents]:
@@ -254,7 +256,7 @@ def build(run):
             ask = asks[1][1]
         built["case-{}".format(number)] = {"title": title, **state(repo)}
         (run / "prompts" / "case-{}.md".format(number)).write_text(
-            "Use the independent-review-handoff skill.\n\n"
+            ("Use the independent-review-handoff skill.\n\n" if name_the_skill else "") +
             "The project to review is the Git repository at:\n{}\n\n"
             "Request: {}\n\n"
             "When you have finished, save your full report as:\n{}\n"
@@ -288,6 +290,8 @@ def change(run):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) != 3 or sys.argv[1] not in ("build", "check", "change"):
+    no_skill = sys.argv[1:2] == ["build"] and sys.argv[3:] == ["--no-skill"]
+    if len(sys.argv) != (4 if no_skill else 3) or sys.argv[1] not in ("build", "check", "change"):
         raise SystemExit(__doc__)
-    {"build": build, "check": check, "change": change}[sys.argv[1]](Path(sys.argv[2]).expanduser().resolve())
+    target = Path(sys.argv[2]).expanduser().resolve()
+    build(target, name_the_skill=False) if no_skill else {"build": build, "check": check, "change": change}[sys.argv[1]](target)

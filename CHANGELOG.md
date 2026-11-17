@@ -11,6 +11,14 @@ Test tooling only. The skill is unchanged and stays 1.1.0.
 - First run of the nine cases, 2026-11-16: one fresh Codex session per case with the installed 1.1.0.
   All nine reports met their expected result, and no reviewer changed the project it reviewed. One run
   per case, evaluated by the builder of the cases, with no run without the skill to compare against.
+- `tests/fixtures.py build <run-dir> --no-skill` builds the same cases with prompts that do not name the
+  skill, for a baseline run.
+- Second run with the skill and one run without it, 2026-11-17, judged blind by two other agents as well
+  as by the builder of the cases. With the skill: nine of nine again. Without it (the skill switched off
+  for the session, the owner's global Codex instructions still loaded): no case failed, six or seven of
+  nine fully met; the reviewer still found every defect and changed nothing, but left out the repair
+  brief for the owner's authorization and the skill's verdict words. The skill cost about 1.6 times the
+  tokens. One baseline run, small cases.
 
 ## 1.1.0 — 2026-11-16
 
